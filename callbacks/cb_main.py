@@ -2,6 +2,7 @@ from aiogram.types import CallbackQuery, Message
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.fsm.context import FSMContext
 from aiogram import Router, F
+from database.add_course_to_db import add_course_to_db
 
 addproduct_router = Router()
 
@@ -45,7 +46,6 @@ async def add_course_to_db(msg: Message, state: FSMContext):
     description = data['description']
     price = data['price']
     product_url = data['product_url']
-    # await add_course_to_db(name, description, price, product_url)
-    await msg.answer(f'name: {name}\ndescription: {description}\nprice: {price}' \
-        f'\nproduct_url: {product_url}')
+    await add_course_to_db(name, description, price, product_url)
+    await msg.answer(f'<b>Курс был успешно добавлен в базу данных!</b>', parse_mode='html')
     await state.clear()
