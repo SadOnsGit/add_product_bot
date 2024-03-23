@@ -39,7 +39,7 @@ async def add_product_url(msg: Message, state: FSMContext):
     await state.set_state(Addproduct.product_url)
     
 @addproduct_router.message(Addproduct.product_url)
-async def add_course_to_db(msg: Message, state: FSMContext):
+async def add_course(msg: Message, state: FSMContext):
     await state.update_data(product_url = msg.text)
     data = await state.get_data()
     name = data['name']

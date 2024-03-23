@@ -11,7 +11,7 @@ host = os.getenv('host')
 db_name = os.getenv('db_name')
 
 
-def add_course_to_db(name: str, desc: str, price: int, prod_url: str):
+async def add_course_to_db(name: str, desc: str, price: int, prod_url: str):
     try:
         with connect(
             host=f"{host}",
